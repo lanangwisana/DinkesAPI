@@ -5,6 +5,6 @@ namespace DinkesAPI.Models {
         public string? jenis_faskes { get; set; }
         public string? alamat_faskes { get; set; }
 
-        public JumlahTenagaMedis? JumlahTenagaMedis { get; set; }
+        public List<JumlahTenagaMedis>? JumlahTenagaMedis { get; set; }
     }
 }
