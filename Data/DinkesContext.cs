@@ -9,3 +9,11 @@ namespace DinkesAPI.Data {
         public DbSet<JumlahTenagaMedis> JumlahTenagaMedis { get; set; }
     }
 }
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<JumlahTenagaMedis>()
+        .HasOne(jtm => jtm.Faskes)
+        .WithOne(f => f.JumlahTenagaMedis)
+        .HasForeignKey<JumlahTenagaMedis>(jtm => jtm.ID_faskes);
+}

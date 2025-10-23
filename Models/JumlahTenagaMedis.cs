@@ -6,6 +6,6 @@ namespace DinkesAPI.Models {
         public int bidan { get; set; }
 
         public int ID_faskes { get; set; }
-        public Faskes Faskes { get; set; }
+        public Faskes? Faskes { get; set; }
     }
 }
