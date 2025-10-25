@@ -5,7 +5,7 @@
 namespace DinkesAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialClean : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,8 +14,7 @@ namespace DinkesAPI.Migrations
                 name: "Faskes",
                 columns: table => new
                 {
-                    ID_faskes = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID_faskes = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     nama_faskes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     jenis_faskes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     alamat_faskes = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -29,12 +28,11 @@ namespace DinkesAPI.Migrations
                 name: "JumlahTenagaMedis",
                 columns: table => new
                 {
-                    ID_Jumlahtm = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID_Jumlahtm = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     dokter = table.Column<int>(type: "int", nullable: false),
                     perawat = table.Column<int>(type: "int", nullable: false),
                     bidan = table.Column<int>(type: "int", nullable: false),
-                    ID_faskes = table.Column<int>(type: "int", nullable: false)
+                    ID_faskes = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {

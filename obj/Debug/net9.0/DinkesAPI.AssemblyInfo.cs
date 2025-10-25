@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DinkesAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e281e6c9e55954caba7045809de4df548000f534")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92cd278e8e3de19a9de51616ea8a786ff2bb3ce9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DinkesAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DinkesAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

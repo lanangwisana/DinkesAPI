@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["bidan", "Dinkes", "dokter", "faskes", "Faskes", "Jumlah", "Jumlahtm", "Medis", "perawat", "Registrasi", "Tenaga", "weatherforecast"]
+  "cSpell.words": ["bidan", "Dinkes", "dokter", "faskes", "Faskes", "Jumlah", "Jumlahtm", "Medis", "perawat", "Registrasi", "Tenaga", "weatherforecast"],
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:DinkesAPI}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DinkesAPI.Migrations
 {
     [DbContext(typeof(DinkesContext))]
-    [Migration("20251023090417_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251025063456_InitialClean")]
+    partial class InitialClean
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,8 @@ namespace DinkesAPI.Migrations
 
             modelBuilder.Entity("DinkesAPI.Models.Faskes", b =>
                 {
-                    b.Property<int>("ID_faskes")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_faskes"));
+                    b.Property<string>("ID_faskes")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("alamat_faskes")
                         .HasColumnType("nvarchar(max)");
@@ -48,14 +45,12 @@ namespace DinkesAPI.Migrations
 
             modelBuilder.Entity("DinkesAPI.Models.JumlahTenagaMedis", b =>
                 {
-                    b.Property<int>("ID_Jumlahtm")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("ID_Jumlahtm")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Jumlahtm"));
-
-                    b.Property<int>("ID_faskes")
-                        .HasColumnType("int");
+                    b.Property<string>("ID_faskes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("bidan")
                         .HasColumnType("int");

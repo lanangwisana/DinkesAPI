@@ -23,11 +23,8 @@ namespace DinkesAPI.Migrations
 
             modelBuilder.Entity("DinkesAPI.Models.Faskes", b =>
                 {
-                    b.Property<int>("ID_faskes")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_faskes"));
+                    b.Property<string>("ID_faskes")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("alamat_faskes")
                         .HasColumnType("nvarchar(max)");
@@ -41,34 +38,16 @@ namespace DinkesAPI.Migrations
                     b.HasKey("ID_faskes");
 
                     b.ToTable("Faskes");
-
-                    b.HasData(
-                        new
-                        {
-                            ID_faskes = 1,
-                            alamat_faskes = "Jl. Soekarno-Hatta No.123",
-                            jenis_faskes = "Puskesmas",
-                            nama_faskes = "Puskesmas Bandung Kidul"
-                        },
-                        new
-                        {
-                            ID_faskes = 2,
-                            alamat_faskes = "Jl. Kopo No.45",
-                            jenis_faskes = "Rumah Sakit",
-                            nama_faskes = "RSUD Kota Bandung"
-                        });
                 });
 
             modelBuilder.Entity("DinkesAPI.Models.JumlahTenagaMedis", b =>
                 {
-                    b.Property<int>("ID_Jumlahtm")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("ID_Jumlahtm")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Jumlahtm"));
-
-                    b.Property<int>("ID_faskes")
-                        .HasColumnType("int");
+                    b.Property<string>("ID_faskes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("bidan")
                         .HasColumnType("int");
@@ -84,24 +63,6 @@ namespace DinkesAPI.Migrations
                     b.HasIndex("ID_faskes");
 
                     b.ToTable("JumlahTenagaMedis");
-
-                    b.HasData(
-                        new
-                        {
-                            ID_Jumlahtm = 1,
-                            ID_faskes = 1,
-                            bidan = 3,
-                            dokter = 5,
-                            perawat = 12
-                        },
-                        new
-                        {
-                            ID_Jumlahtm = 2,
-                            ID_faskes = 2,
-                            bidan = 10,
-                            dokter = 15,
-                            perawat = 30
-                        });
                 });
 
             modelBuilder.Entity("DinkesAPI.Models.JumlahTenagaMedis", b =>

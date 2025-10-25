@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DinkesAPI.Data;
 using DinkesAPI.Models;
+using DinkesAPI.Dtos;
 
 namespace DinkesAPI.Controllers {
     [ApiController]
@@ -14,15 +16,43 @@ namespace DinkesAPI.Controllers {
 
         [HttpGet]
         public IActionResult GetAll() {
-            var faskesList = _context.Faskes.ToList();
+            var faskesList = _context.Faskes
+            .Include(f => f.JumlahTenagaMedis)
+            .ToList()
+            .Select(f => new FaskesDetailDto
+            {
+                ID_faskes = f.ID_faskes,
+                nama_faskes = f.nama_faskes,
+                jenis_faskes = f.jenis_faskes,
+                alamat_faskes = f.alamat_faskes,
+                dokter = f.JumlahTenagaMedis != null ? f.JumlahTenagaMedis.Sum(t => t.dokter) : 0,
+                perawat = f.JumlahTenagaMedis != null ? f.JumlahTenagaMedis.Sum(t => t.perawat) : 0,
+                bidan = f.JumlahTenagaMedis != null ? f.JumlahTenagaMedis.Sum(t => t.bidan) : 0
+            })
+            .ToList();
             return Ok(faskesList);
         }
 
-        [HttpPost]
-        public IActionResult Create(Faskes faskes) {
-            _context.Faskes.Add(faskes);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(GetAll), new { id = faskes.ID_faskes }, faskes);
+        [HttpGet("statistik")]
+        public IActionResult GetStatistikFaskes()
+        {
+            var totalFaskes = _context.Faskes.Count();
+            var tenagaMedis = _context.JumlahTenagaMedis.ToList();
+
+            var totalDokter = tenagaMedis.Sum(tm => tm.dokter);
+            var totalPerawat = tenagaMedis.Sum(tm => tm.perawat);
+            var totalBidan = tenagaMedis.Sum(tm => tm.bidan);
+
+            var result = new
+            {
+                dokter_tersedia = totalDokter,
+                perawat_tersedia = totalPerawat,
+                bidan_tersedia = totalBidan,
+                faskes_terdaftar = totalFaskes
+            };
+
+            return Ok(result);
         }
+
     }
 }
